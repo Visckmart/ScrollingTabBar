@@ -38,6 +38,11 @@ internal struct HorizontalTabsView<T: Tab>: View {
                 .scrollIndicators(.hidden)
                 .mask(leftGradient)
                 .mask(rightGradient)
+                .onChange(of: selectedTab) { newTabSelection in
+                    withAnimation {
+                        scrollProxy.scrollTo(newTabSelection.id, anchor: .center)
+                    }
+                }
             }
             .overlay(centeredTabDetector)
             .onPreferenceChange(ViewSizesPreferenceKey.self) { tabRects in
