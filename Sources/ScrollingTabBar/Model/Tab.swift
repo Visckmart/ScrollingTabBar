@@ -12,13 +12,10 @@ public protocol Tab: Identifiable {
     var id: String { get set }
     var iconName: String { get set }
     var color: Color { get set }
-}
-
-public protocol NamedTab: Tab {
     var name: String { get set }
 }
 
-public struct FixedTab: NamedTab {
+public struct FixedTab: Tab {
     public var id: String = UUID().uuidString
     public var name: String
     public var iconName: String

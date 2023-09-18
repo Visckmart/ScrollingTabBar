@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-public struct ScrollingTabBar<T: NamedTab>: View {
+public struct ScrollingTabBar<T: Tab>: View {
     
     public let tabs: [T]
     
@@ -91,7 +91,7 @@ public struct ScrollingTabBar<T: NamedTab>: View {
     }
 }
 
-private struct HorizontalTabsView<T: NamedTab>: View {
+private struct HorizontalTabsView<T: Tab>: View {
     
     let tabs: [T]
     let selectTab: (TabSelection) -> Void

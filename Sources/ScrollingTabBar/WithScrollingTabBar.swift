@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 16.4, *)
-struct ScrollingTabBarModifier<T: NamedTab, SheetContent: View>: ViewModifier {
+struct ScrollingTabBarModifier<T: Tab, SheetContent: View>: ViewModifier {
     
     var isPresented: Binding<Bool> = .constant(true)
     var tabs: [T]
@@ -123,7 +123,7 @@ struct ScrollingTabBarModifier<T: NamedTab, SheetContent: View>: ViewModifier {
 
 @available(iOS 16.4, *)
 extension View {
-    public func withScrollingTabBar<T: NamedTab, SheetContent: View>(
+    public func withScrollingTabBar<T: Tab, SheetContent: View>(
         isPresented: Binding<Bool> = .constant(true),
         tint: (color: Color, intensity: Double)? = nil,
         tabs: [T],
