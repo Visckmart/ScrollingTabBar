@@ -8,6 +8,8 @@
 import SwiftUI
 import Combine
 
+/// A tab bar that has a scrolling behavior for when the tabs overflow, and
+/// that is compatible with fixed tabs on the left and on the right side.
 public struct ScrollingTabBar<T: Tab>: View {
     
     public let tabs: [T]
@@ -46,6 +48,9 @@ public struct ScrollingTabBar<T: Tab>: View {
         .padding(.trailing, rightFixedTab == nil ? 6 : 16)
         .allowsHitTesting(true)
     }
+    
+    
+    // MARK: Fixed Buttons
     
     @ViewBuilder
     private var leftFixedButton: some View {
@@ -91,6 +96,7 @@ public struct ScrollingTabBar<T: Tab>: View {
     }
 }
 
+// MARK: - Horizontal Tabs
 private struct HorizontalTabsView<T: Tab>: View {
     
     let tabs: [T]
@@ -118,13 +124,13 @@ private struct HorizontalTabsView<T: Tab>: View {
                     .padding(.horizontal, 10)
                     .background(scrollStopMonitor(scrollProxy: scrollProxy))
                 }
-                .background(SizeReader())
+                .background(SizeReaderView())
                 .scrollIndicators(.hidden)
                 .mask(leftGradient)
                 .mask(rightGradient)
             }
             .overlay(centeredTabDetector)
-            .onPreferenceChange(ViewSizes.self) { tabRects in
+            .onPreferenceChange(ViewSizesPreferenceKey.self) { tabRects in
                 self.widthEstimate = tabRects.max(by: {$0.width < $1.width})!.width
                 self.checkCenteredTab(tabRects: tabRects)
             }
@@ -148,7 +154,7 @@ private struct HorizontalTabsView<T: Tab>: View {
                     minWidth: biggest/2
                 )
             )
-            .background(SizeReader())
+            .background(SizeReaderView())
             .id(tab.id)
         }
         .animation(.easeOut.speed(4), value: selectedTab)
@@ -161,7 +167,7 @@ private struct HorizontalTabsView<T: Tab>: View {
             .fill(.clear)
             .frame(width: 1, height: 1)
             .allowsHitTesting(false)
-            .background(SizeReader())
+            .background(SizeReaderView())
     }
     
     private func checkCenteredTab(tabRects: [CGRect]) {

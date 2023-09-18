@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class UIAdjustableVisualEffectView: UIVisualEffectView {
+internal final class UIAdjustableVisualEffectView: UIVisualEffectView {
     
     var visualEffect: UIVisualEffect
     var effectIntensity: CGFloat {

@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-struct ScrollViewOffsetReader: View {
+internal struct ScrollViewOffsetReader: View {
     
     private let onScrollingStarted: () -> Void
     private let onScrollingFinished: () -> Void

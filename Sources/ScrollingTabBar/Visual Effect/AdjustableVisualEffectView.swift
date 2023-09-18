@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-struct AdjustableVisualEffectView: UIViewRepresentable {
+internal struct AdjustableVisualEffectView: UIViewRepresentable {
     
     let effect: UIVisualEffect
     let effectIntensity: CGFloat

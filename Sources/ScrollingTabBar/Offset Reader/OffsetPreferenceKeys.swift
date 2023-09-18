@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ViewSizes: PreferenceKey {
+internal struct ViewSizesPreferenceKey: PreferenceKey {
     typealias Value = [CGRect]
     static var defaultValue: [CGRect] = []
     
@@ -17,11 +17,12 @@ struct ViewSizes: PreferenceKey {
     }
 }
 
-struct SizeReader: View {
+internal struct SizeReaderView: View {
     var body: some View {
         GeometryReader { proxy in
             Color.clear
-                .preference(key: ViewSizes.self, value: [proxy.frame(in: .global)])
+                .preference(key: ViewSizesPreferenceKey.self, 
+                            value: [proxy.frame(in: .global)])
         }
     }
 }

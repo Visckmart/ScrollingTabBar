@@ -131,7 +131,7 @@ extension View {
         leftFixedTab: FixedTab? = nil,
         rightFixedTab: FixedTab? = nil,
         presentationDetent: Binding<PresentationDetent> = .constant(.height(75)),
-        sheetContent: () -> SheetContent
+        sheetContent: () -> SheetContent = { EmptyView() }
     ) -> some View {
         modifier(
             ScrollingTabBarModifier(

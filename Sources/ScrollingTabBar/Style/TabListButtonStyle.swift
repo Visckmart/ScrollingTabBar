@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct TabListButtonStyle: ButtonStyle {
+/// The definition of the style used by the usual tabs.
+internal struct TabListButtonStyle: ButtonStyle {
     
     let color: Color
     var isSelected: Bool = false
